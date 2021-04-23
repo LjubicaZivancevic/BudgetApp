@@ -60,7 +60,7 @@ function App() {
     valueInput.current.value = "";
   }
 
-  function sortIncome() {
+  function sortIncomes() {
     income.sort((a, b) => (a.val > b.val ? 1 : -1));
     console.log(income);
   }
@@ -105,7 +105,11 @@ function App() {
             name="Expence"
             click={addExpense}
           ></Button>
-          <Button className="ui button" name="sort" click={sortIncome}></Button>
+          <Button
+            className="ui button"
+            name="sort"
+            click={sortIncomes}
+          ></Button>
           <div className="or"></div>
           <Button
             className="ui positive button"
