@@ -1,0 +1,16 @@
+button {
+  width: 10em;
+  display: inline;
+  outline: none;
+  border: none;
+  margin: 0.1em;
+  border-radius: 4em;
+  color: black;
+  font-size: 20px;
+}
+.Income {
+  background-color: aquamarine;
+}
+.Expence {
+  background-color: rgb(241, 86, 86);
+}
