@@ -1,22 +1,66 @@
-.item{
-    display: flex;
-padding: 10px;
-    width: 90%;
-    margin: auto auto;
-    background-color: aliceblue;
-   
-    
+.Expense,
+.Income {
+  display: flex;
+  padding: 10px 20px;
+  margin: 0 auto;
+  background-color: aliceblue;
+  vertical-align: middle;
+  font-size: 16px;
+  overflow: hidden;
+  height: 10%;
 }
-.item__description{
-    width: 50%;
-    height: 100%;
-    text-align: left;
-    vertical-align: middle;
-    
+.Income {
+  border-bottom: 1px solid #7fffd4;
 }
-.right{
-    width: 50%;
-    text-align: right;
-    height: 100%;
-    vertical-align: middle;
+.Expense {
+  border-bottom: 1px solid #f15656;
+}
+.item__value {
+  display: inline-block;
+  vertical-align: middle;
+  align-self: center;
+  transition: transform 0.5s;
+}
+
+.Expense:hover .item__delete > .item__delete--btn,
+.Income:hover .item__delete > .item__delete--btn {
+  opacity: 0.9;
+  visibility: visible;
+  display: inline-block;
+}
+.Expense:hover .item__value,
+.Income:hover .item__value {
+  transform: translateX(-10px);
+}
+
+.item__delete {
+  display: inline-block;
+  width: auto;
+  align-self: baseline;
+}
+.item__delete--btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  width: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.item__date {
+  display: block;
+  align-self: center;
+  text-align: left;
+}
+.item__description {
+  text-align: left;
+  vertical-align: middle;
+}
+.right {
+  text-align: right;
+  vertical-align: middle;
 }

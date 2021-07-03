@@ -1,0 +1,7 @@
+.flex {
+  display: flex;
+  direction: row;
+  align-content: center;
+  justify-content: center;
+  width: 100vw;
+}

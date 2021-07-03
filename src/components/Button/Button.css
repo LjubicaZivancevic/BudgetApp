@@ -7,10 +7,11 @@ button {
   border-radius: 4em;
   color: black;
   font-size: 20px;
+  padding: 10px;
 }
-.Income {
+.Income_button {
   background-color: aquamarine;
 }
-.Expence {
+.Expence_button {
   background-color: rgb(241, 86, 86);
 }
