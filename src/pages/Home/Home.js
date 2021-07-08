@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Item from "../../components/Item/Item";
-import Nav from "../../components/Navigation/Nav";
-import { Grid } from "@material-ui/core";
+import {Container, Row, Col} from 'react-bootstrap'
 import "./Home.css";
 function Home() {
   const [expenses, setExpenses] = useState([
@@ -62,17 +61,24 @@ function Home() {
   };
 
   function addExpense() {
-    const ex = {
-      desc: textInput.current.value,
-      val: valueInput.current.value,
-      type: "Expense",
-      date: currentDate(),
-    };
+if(textInput.current.value === "" || valueInput.current.value === ""){
+  alert("Please fill in all information")
+}
+else{
+  const ex = {
+    desc: textInput.current.value,
+    val: valueInput.current.value,
+    type: "Expense",
+    date: currentDate(),
+  };
 
-    setExpenses([...expenses, ex]);
-    textInput.current.value = "";
-    valueInput.current.value = "";
-    console.log(typeof textInput.current.value);
+  setExpenses([...expenses, ex]);
+  textInput.current.value = "";
+  valueInput.current.value = "";
+  console.log(typeof textInput.current.value);
+}
+
+  
   }
 
   function addIncome() {
@@ -101,10 +107,17 @@ function Home() {
 
   return (
     <div className="App">
+      <Container>
+  <Row>
+    <Col>  
+    <p className="Header-text">Current bilans</p>
+          <p className="Header-bilans">2000</p>
+          </Col>
+  </Row>
+</Container>
       <header className="flex">
         <div>
-          <p className="Header-text">Current bilans</p>
-          <p className="Header-bilans">2000</p>
+        
 
           <input
             type="text"
