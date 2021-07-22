@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Button from "../../components/Button/Button";
 import Item from "../../components/Item/Item";
-import {Container, Row, Col} from 'react-bootstrap'
+import NumberFormat from 'react-number-format';
 import "./Home.css";
 function Home() {
   const [expenses, setExpenses] = useState([
@@ -10,7 +10,7 @@ function Home() {
       desc: "some reason 5",
       date: "20/05/2020.",
       type: "Expense",
-      val: 21100,
+      val: 100,
     },
     {
       id: 2,
@@ -50,7 +50,7 @@ function Home() {
       val: 100,
     },
   ]);
-
+  const [bilans, setBilans] = useState("");
   const [text, setText] = useState("");
   const textInput = useRef(null);
   const valueInput = useRef(null);
@@ -73,6 +73,7 @@ else{
   };
 
   setExpenses([...expenses, ex]);
+  countBilans(valueInput.current.value, "Expense")
   textInput.current.value = "";
   valueInput.current.value = "";
   console.log(typeof textInput.current.value);
@@ -89,6 +90,7 @@ else{
       date: currentDate(),
     };
     setIncome([...income, inc]);
+    countBilans(valueInput.current.value, "Income")
     textInput.current.value = "";
     valueInput.current.value = "";
   }
@@ -104,22 +106,43 @@ else{
       setExpenses(expenses.filter((item) => item.id !== id));
     }
   }
+  function countBilans(value,type){
+    let expensesSum = 0;
+    let incomesSum = 0;
+    {expenses.map((exp, index) => (
+        expensesSum += Number(exp.val)
+        
+    ))
+    }
+    {income.map((inc, index) => (
+      incomesSum += Number(inc.val)
+      
+  ))
+
+  }
+  setBilans(incomesSum -expensesSum)
+  console.log(expensesSum)
+    if (type == "Income") {
+      setBilans(Number(bilans) + Number(value))
+    } else {
+      setBilans(Number(bilans) - Number(value))
+    }
+  }
 
   return (
     <div className="App">
-      <Container>
-  <Row>
-    <Col>  
-    <p className="Header-text">Current bilans</p>
-          <p className="Header-bilans">2000</p>
-          </Col>
-  </Row>
-</Container>
-      <header className="flex">
-        <div>
-        
+<div className="header">
+  <div className="header-bilans"> 
+  <p className="header-bilans-text">Current bilans</p>
+  <p className="header-bilans-count">
+    <NumberFormat value={bilans} thousandSeparator={true} prefix={'$'} displayType={'text'} ></NumberFormat>
+   </p>
+  </div>
 
-          <input
+</div> 
+<div className="header">
+  <div className="header-form-input">
+  <input
             type="text"
             className="form-control"
             name=""
@@ -129,8 +152,10 @@ else{
             placeholder=""
             onChange={(event) => setText(event.target.value)}
           />
-
-          <input
+  </div>
+<div className="header-form-input">
+       
+<input
             type="number"
             className="form-control"
             name=""
@@ -140,6 +165,19 @@ else{
             placeholder=""
             onChange={(event) => setText(event.target.value)}
           />
+</div>
+
+      
+</div>
+  
+         
+
+      <header className="flex">
+        <div>
+        
+
+
+      
         </div>
         <div>
           <Button name="Income_button" click={addIncome}></Button>

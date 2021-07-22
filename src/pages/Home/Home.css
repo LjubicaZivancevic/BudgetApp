@@ -1,7 +1,32 @@
 .flex {
   display: flex;
-  direction: row;
+  direction: column;
   align-content: center;
   justify-content: center;
   width: 100vw;
+}
+.header {
+  display: flex;
+  direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.header-bilans-text {
+  font-size: 2em;
+  margin: auto;
+}
+.header-bilans-count {
+  font-size: 3em;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.form-control {
+  margin: 20px 10px;
+  border: 1px solid gray;
+  width: 14vw;
+  border-radius: 25px;
+  padding: 4px;
 }
